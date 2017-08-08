@@ -16,10 +16,10 @@ def request_new_github_repos_api(weeks=1):
                       'sort': 'stars',
                       'order': 'desc'}
               }
-    r = requests.get(github_repositories, params=payload)
-    if not r.ok:
-        r.raise_for_status()
-    return json.loads(r.text)
+    response = requests.get(github_repositories, params=payload)
+    if not response.ok:
+        response.raise_for_status()
+    return json.loads(response.text)
 
 
 def get_top_urls_with_issues(repositories_json):
